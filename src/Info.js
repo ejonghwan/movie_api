@@ -14,7 +14,7 @@ class Info extends Component {
             editing: !this.state.editing,
             name: data.name,
             num: data.num,
-        })
+        });
 
         onUpdate(data.id, {
             name: this.state.name,

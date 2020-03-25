@@ -6,9 +6,25 @@ import List from './List'
 
 
 class App extends Component {
-    id = 0;
+    id = 3;
     state = {
-        information: []
+        information: [
+            {
+                id: 0,
+                name: '이종환',
+                num: '01020018363',
+            },
+            {
+                id: 1,
+                name: '신민아',
+                num: '01020018365',
+            },
+            {
+                id: 2,
+                name: '룰루',
+                num: '01025558355',
+            }
+        ]
     }
 
     handleCreate = (data) => {
@@ -39,7 +55,7 @@ class App extends Component {
                         id
                     }
                 }
-                return data;
+                return d;
             } )
         })
     }
