@@ -8,6 +8,16 @@ class Info extends Component {
         num: '',
     }
 
+    shouldComponentUpdate(nextProps, nextState) {
+        //아무것도 안했을 시 기본동작 return true
+        //조건1 지금 state와 다음 state가 다르면 리턴하게끔
+        if( this.state !== nextState ) {
+            return true
+        } //이게 false면 아래 리턴
+        return this.props.data !== nextProps.data
+    }
+
+
     toggleEditing = () => {
         const { data, onUpdate } = this.props;
         this.setState({
@@ -36,7 +46,6 @@ class Info extends Component {
 
 
     render() {
-
         const { name, num } = this.props.data;
         const styled = {
             padding: '10px',
@@ -44,6 +53,8 @@ class Info extends Component {
             Color: '#555',
             marginTop: '5px'
         }
+
+        console.log(name)
 
         return (
             <div style={styled}>

@@ -6,6 +6,7 @@ import List from './List'
 
 
 class App extends Component {
+
     id = 3;
     state = {
         information: [
@@ -24,8 +25,10 @@ class App extends Component {
                 name: '룰루',
                 num: '01025558355',
             }
-        ]
-    }
+        ],
+        keyword: '',
+    };
+
 
     handleCreate = (data) => {
         const { information } = this.state;
@@ -58,6 +61,12 @@ class App extends Component {
                 return d;
             } )
         })
+    };
+
+    handleChange = (e) => {
+        this.setState({
+            keyword: e.target.value,
+        })
     }
 
 
@@ -67,7 +76,20 @@ class App extends Component {
         <div>
             <Form onCreate={this.handleCreate} />
             {/*{JSON.stringify(this.state.information)}*/}
-            <List data={this.state.information} onRemove={this.handleRemove} onUpdate={this.handleUpdate} />
+            <input
+                name="serch"
+                placeholder="serch..."
+                onChange={this.handleChange}
+            />
+            <List
+                data={this.state.information.filter(
+                    info => {
+                        return info.name.indexOf(this.state.keyword) > -1 || info.num.indexOf(this.state.keyword) > -1
+                    }
+                )}
+                onRemove={this.handleRemove}
+                onUpdate={this.handleUpdate}
+            />
         </div>
       );
     }

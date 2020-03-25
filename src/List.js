@@ -4,8 +4,9 @@ import Info from './Info'
 class List extends Component {
     render() {
 
+        console.log("rendering list")
         const { data, onRemove, onUpdate } = this.props;
-        const list = data.map( d => <Info data={d} key={d.id} onRemove={onRemove} onUpdate={onUpdate} /> )
+        const list = data.map( d => <Info data={d} key={d.id} onRemove={onRemove} onUpdate={onUpdate} /> );
 
         return (
             <div>
