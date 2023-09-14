@@ -10,11 +10,11 @@ const config: Config = {
 			keyframes: {
 				rotation: {
 					'0%': { transform: 'rotate(0deg)' },
-					'100%': { transform: 'rotate(360deg' },
+					'100%': { transform: 'rotate(360deg)' },
 				},
 			},
 			animation: {
-				'ani-rotation': 'rotation 1s linear infinite',
+				rotation: 'rotation 1s linear infinite',
 			},
 		},
 	},
