@@ -3,6 +3,8 @@ import Image from 'next/image';
 import { baseURL } from '@/url';
 import { FaAngleLeft, FaAngleRight } from 'react-icons/fa';
 import { useRef } from 'react';
+import { useRecoilState } from 'recoil';
+import { modalState, movieState } from '@/recoil/globalAtom';
 
 interface Props {
 	movies: Movie[];
@@ -10,6 +12,8 @@ interface Props {
 
 function List({ movies }: Props) {
 	const listFrame = useRef<HTMLUListElement>(null);
+	const [_, setShowModal] = useRecoilState(modalState);
+	const [MovieInfo, setMovieInfo] = useRecoilState(movieState);
 
 	const handleClick = (direction: string) => {
 		if (listFrame.current) {
@@ -38,6 +42,10 @@ function List({ movies }: Props) {
 								blurDataURL={`${baseURL}w300${movie.backdrop_path}`}
 								sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
 								className='object-cover'
+								onClick={() => {
+									setShowModal(true);
+									setMovieInfo(movie);
+								}}
 							/>
 						</li>
 					);
